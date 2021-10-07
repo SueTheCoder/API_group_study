@@ -1,7 +1,6 @@
 package com.runner;
 
 import com.tests.School;
-import com.tests.basicResponse;
 import org.junit.platform.runner.JUnitPlatform;
 import org.junit.platform.suite.api.IncludeTags;
 import org.junit.platform.suite.api.SelectClasses;

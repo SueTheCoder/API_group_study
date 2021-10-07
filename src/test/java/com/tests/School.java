@@ -83,6 +83,23 @@ public class School implements school_base {
         int johnID = jsonPath.getInt("students.find{it.firstName == 'John'}.studentId");
         System.out.println("johnID = " + johnID);
 
-
     }
+
+    @Tag("smoke")
+    @Tag("regression")
+    @Test
+    @DisplayName("Retrieve a student with ID")
+    public void getStudentWithID(){
+        given()
+                .accept(ContentType.JSON)
+                .pathParam("id", 24668)
+                .when()
+                .get("/student/{id}").prettyPeek()
+                .then()
+                .statusCode(200)
+                .header("Server", "Apache/2.4.38 (Amazon) OpenSSL/1.0.2k-fips")
+                .header("Content-Type", "application/json;charset=UTF-8");
+    }
+
+
 }
