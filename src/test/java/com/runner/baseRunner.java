@@ -1,5 +1,6 @@
 package com.runner;
 
+import com.tests.School;
 import com.tests.basicResponse;
 import org.junit.platform.runner.JUnitPlatform;
 import org.junit.platform.suite.api.IncludeTags;
@@ -11,8 +12,8 @@ import org.junit.runner.RunWith;
 
 @RunWith(JUnitPlatform.class)
 @SuiteDisplayName("Smoke Suite")
-@SelectPackages({"com.basePage", "com.pojo", "com.utilities", "com.tests"})
-@SelectClasses( {basicResponse.class} )
+@SelectPackages({"com.basePage", "com.pojo", "com.utilities", "com.tests", "com.runner"})
+@SelectClasses( {School.class} )
 @IncludeTags({"smoke", "regression"})
 
 public class baseRunner {
