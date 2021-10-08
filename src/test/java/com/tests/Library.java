@@ -20,4 +20,12 @@ public class Library implements library_base {
                 .when().get("/get_book_categories").prettyPeek()
                 .then().statusCode(200).contentType("application/json; charset=utf-8");
     }
+
+    @Tag("smoke")
+    @Test
+    @DisplayName("get_book_by_id/{id}")
+    public void get_book_by_id(){
+
+    }
+
 }
