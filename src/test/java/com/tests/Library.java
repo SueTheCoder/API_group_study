@@ -1,22 +1,16 @@
 package com.tests;
 
-import com.basePage.*;
+import com.basePage.library_base;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
-
-public class basicResponse implements base_page {
+public class Library implements library_base {
 
     @Tag("smoke")
-    @Tag("regression")
     @Test
-    @DisplayName("Verify")
-    public void test1(){
+    @DisplayName("get_book_categories")
+    public void get_book_categories(){
 
     }
-
-
 }
-
-

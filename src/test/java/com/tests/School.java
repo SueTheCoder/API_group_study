@@ -13,6 +13,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -100,6 +101,74 @@ public class School implements school_base {
                 .header("Server", "Apache/2.4.38 (Amazon) OpenSSL/1.0.2k-fips")
                 .header("Content-Type", "application/json;charset=UTF-8");
     }
+
+
+    @Tag("smoke")
+    @Tag("regression")
+    @Test
+    @DisplayName("Retrieve all teachers")
+    public void retrieveAllTeachers(){
+        given().accept(ContentType.JSON).log().all()
+                .when().get("/teacher/all")
+                .then().statusCode(200).contentType(ContentType.JSON)
+                .assertThat().header("Content-Type", is("application/json;charset=UTF-8"));
+    }
+
+
+
+    @Tag("smoke")
+    @Tag("regression")
+    @Test
+    @DisplayName("Create a teacher")
+    public void createTeacher(){
+
+        String teacher = "{\n" +
+                "  \"batch\": 22,\n" +
+                "  \"birthDate\": \"04/01/2020\",\n" +
+                "  \"department\": \"string\",\n" +
+                "  \"emailAddress\": \"string\",\n" +
+                "  \"firstName\": \"Sue\",\n" +
+                "  \"gender\": \"string\",\n" +
+                "  \"joinDate\": \"04/01/2020\",\n" +
+                "  \"lastName\": \"Kim\",\n" +
+                "  \"password\": \"string\",\n" +
+                "  \"phone\": \"string\",\n" +
+                "  \"premanentAddress\": \"string\",\n" +
+                "  \"salary\": 0,\n" +
+                "  \"section\": \"string\",\n" +
+                "  \"subject\": \"string\",\n" +
+                "  \"teacherId\": 0\n" +
+                "}";
+
+/*
+        given().accept(ContentType.JSON).body(teacher)
+                .when().post("/teacher/create").prettyPeek()
+                .then().statusCode(201);
+
+ */
+
+        Map<String, Object> teacherMap = new HashMap<>();
+        teacherMap.put("batch", 22);
+        teacherMap.put("birthDate", "04/01/2020");
+        teacherMap.put("department", "string");
+        teacherMap.put("emailAddress", "string");
+        teacherMap.put("firstName", "Sue");
+        teacherMap.put("gender", "string");
+        teacherMap.put("joinDate", "04/01/2020");
+        teacherMap.put("lastName", "Kim");
+        teacherMap.put("password", "string");
+        teacherMap.put("phone", "string");
+        teacherMap.put("premanentAddress", "string");
+        teacherMap.put("salary", 0);
+        teacherMap.put("section", "string");
+        teacherMap.put("subject", "string");
+        teacherMap.put("teacherId", 0);
+
+        given().accept(ContentType.JSON).body(teacherMap)
+                .when().contentType(ContentType.JSON).post("/teacher/create").prettyPeek()
+                .then().statusCode(201);
+    }
+
 
 
 }
